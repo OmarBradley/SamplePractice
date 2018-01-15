@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "de.mannodermaus.android-junit5"
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "lee.samplepractice"
+        minSdkVersion 23
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+
+        /*
+      library
+       */
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation rootProject.ext.dependencies.library.appcompat_v7
+        implementation rootProject.ext.dependencies.library.constraint_layout
+        implementation rootProject.ext.dependencies.library.kotlin
+        implementation rootProject.ext.dependencies.library.kotlin_reflact
+
+        // RX
+        api rootProject.ext.dependencies.library.rx_java
+        implementation rootProject.ext.dependencies.library.rx_android
+        implementation rootProject.ext.dependencies.library.rx_kotlin
+        implementation rootProject.ext.dependencies.library.rx_binding
+        implementation rootProject.ext.dependencies.library.rxlifecycle
+        implementation rootProject.ext.dependencies.library.rxlifecycle_android
+        implementation rootProject.ext.dependencies.library.rxlifecycle_components
+        implementation rootProject.ext.dependencies.library.rxlifecycle_components_preference
+        implementation rootProject.ext.dependencies.library.rxlifecycle_android_lifecycle
+        implementation rootProject.ext.dependencies.library.rxlifecycle_kotlin
+        implementation rootProject.ext.dependencies.library.rxlifecycle_android_lifecycle_kotlin
+
+        // android_arch
+        implementation rootProject.ext.dependencies.library.lifecycle_extensions
+        annotationProcessor rootProject.ext.dependencies.library.lifecycle_compiler
+
+        // dagger2
+        implementation rootProject.ext.dependencies.library.dagger_android
+        implementation rootProject.ext.dependencies.library.dagger_android_support
+        annotationProcessor rootProject.ext.dependencies.library.dagger_android_processor
+
+        /*
+        Test
+         */
+        testImplementation rootProject.ext.dependencies.unit_test.spek_api
+        testImplementation rootProject.ext.dependencies.unit_test.spek_junit_platform_engine
+        testImplementation rootProject.ext.dependencies.unit_test.junit_platform_runner
+        testImplementation rootProject.ext.dependencies.unit_test.jupiter_api
+        testImplementation junit5.unitTests()
+        testCompileOnly rootProject.ext.dependencies.unit_test.android_junit5_embedded_runtime
+
+        /*
+        android Test
+         */
+        androidTestImplementation rootProject.ext.dependencies.android_test.test_runner
+        androidTestImplementation rootProject.ext.dependencies.android_test.espresso_core
+    }
+}
+
+junitPlatform {
+    filters {
+        engines {
+            include "spek"
+        }
+    }
+}
+
