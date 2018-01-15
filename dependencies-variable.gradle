@@ -1,0 +1,85 @@
+ext {
+
+    // classpath
+    gradle_version = '3.0.1'
+    kotlin_version = '1.1.51'
+    junit5 = '1.0.22'
+
+    // library
+    support_library = '27.0.2'
+    constraint_layout = '1.0.2'
+    rx_java = '2.1.8'
+    rx_android = '2.0.1'
+    rx_kotlin = '2.2.0'
+    rx_binding = '2.0.0'
+    rxlifecycle = '2.2.1'
+    android_arch = '1.0.0'
+    dagger2 = '2.14.1'
+
+    // unit test
+    spek = '1.1.5'
+    junit_platform_runner = '1.0.2'
+    jupiter_api = '5.0.0'
+    android_junit5_embedded_runtime = '1.0.22'
+
+    // android test
+    test_runner = '1.0.1'
+    espresso_core = '3.0.1'
+
+}
+
+ext.dependencies = [
+
+        classpath   : [
+                gradle: "com.android.tools.build:gradle:$ext.gradle_version",
+                kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$ext.kotlin_version",
+                junit5: "de.mannodermaus.gradle.plugins:android-junit5:$ext.junit5"
+        ],
+
+        library     : [
+                appcompat_v7                        : "com.android.support:appcompat-v7:$ext.support_library",
+                constraint_layout                   : "com.android.support.constraint:constraint-layout:$ext.constraint_layout",
+                kotlin                              : "org.jetbrains.kotlin:kotlin-stdlib:$ext.kotlin_version",
+                kotlin_reflact                      : "org.jetbrains.kotlin:kotlin-reflect:$ext.kotlin_version",
+
+                rx_java                             : "io.reactivex.rxjava2:rxjava:$ext.rx_java",
+                rx_android                          : "io.reactivex.rxjava2:rxandroid:$ext.rx_android",
+                rx_kotlin                           : "io.reactivex.rxjava2:rxkotlin:$ext.rx_kotlin",
+                rx_binding                          : "com.jakewharton.rxbinding2:rxbinding:$ext.rx_binding",
+                rxlifecycle                         : "com.trello.rxlifecycle2:rxlifecycle:$ext.rxlifecycle",
+                rxlifecycle_android                 : "com.trello.rxlifecycle2:rxlifecycle-android:$ext.rxlifecycle",
+                rxlifecycle_components              : "com.trello.rxlifecycle2:rxlifecycle-components:$ext.rxlifecycle",
+                rxlifecycle_components_preference   : "com.trello.rxlifecycle2:rxlifecycle-components-preference:$ext.rxlifecycle",
+                rxlifecycle_android_lifecycle       : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$ext.rxlifecycle",
+                rxlifecycle_kotlin                  : "com.trello.rxlifecycle2:rxlifecycle-kotlin:$ext.rxlifecycle",
+                rxlifecycle_android_lifecycle_kotlin: "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:$ext.rxlifecycle",
+
+                lifecycle_extensions                : "android.arch.lifecycle:extensions:$ext.android_arch",
+                lifecycle_compiler                  : "android.arch.lifecycle:compiler:$ext.android_arch",
+
+                dagger_android                      : "com.google.dagger:dagger-android:$ext.dagger2",
+                dagger_android_support              : "com.google.dagger:dagger-android-support:$ext.dagger2",
+                dagger_android_processor            : "com.google.dagger:dagger-android-processor:$ext.dagger2",
+        ],
+
+        unit_test   : [
+                spek_api                       : "org.jetbrains.spek:spek-api:$ext.spek",
+                spek_junit_platform_engine     : "org.jetbrains.spek:spek-junit-platform-engine:$ext.spek",
+                junit_platform_runner          : "org.junit.platform:junit-platform-runner:$ext.junit_platform_runner",
+                jupiter_api                    : "org.junit.jupiter:junit-jupiter-api:$ext.jupiter_api",
+                android_junit5_embedded_runtime: "de.mannodermaus.gradle.plugins:android-junit5-embedded-runtime:$ext.android_junit5_embedded_runtime"
+        ],
+
+        android_test: [
+                test_runner  : "com.android.support.test:runner:$ext.test_runner",
+                espresso_core: "com.android.support.test.espresso:espresso-core:$ext.espresso_core"
+        ]
+
+]
+
+ext.exclude_groups = [
+
+        kotlin        : "org.jetbrains.kotlin",
+        junit_platform: "org.junit.platform"
+
+]
